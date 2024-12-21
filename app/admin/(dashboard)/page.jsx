@@ -11,7 +11,9 @@ export default function Admin() {
 
   getToken().then((token) => {
     if (token == null) {
-      window.location.href = "/admin/login";
+      if (window != undefined) {
+        window.location.href = "/admin/login";
+      }
     }
   });
 

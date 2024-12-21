@@ -13,19 +13,21 @@ export default function Modal({ recipe, onClose }) {
     }
   }, []);
 
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
+  if (window != undefined) {
+    useEffect(() => {
+      const handleEsc = (event) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      };
 
-    window.addEventListener("keydown", handleEsc);
+      window.addEventListener("keydown", handleEsc);
 
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
-  }, [onClose]);
+      return () => {
+        window.removeEventListener("keydown", handleEsc);
+      };
+    }, [onClose]);
+  }
 
   return (
     <dialog ref={modalRef} id="modal" className="modal">
