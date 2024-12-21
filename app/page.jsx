@@ -21,13 +21,15 @@ export default function Home() {
       const cuisines = Array.from(new Set(data.map((item) => item.cuisine)));
       setUniqueCuisines(cuisines);
 
-      const hash = window.location.hash.slice(1);
-      if (hash) {
-        const recipe = data.find(
-          (item) => encodeURIComponent(item.name) === hash
-        );
-        if (recipe) {
-          setSelectedRecipe(recipe);
+      if (window != undefined) {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          const recipe = data.find(
+            (item) => encodeURIComponent(item.name) === hash
+          );
+          if (recipe) {
+            setSelectedRecipe(recipe);
+          }
         }
       }
     });

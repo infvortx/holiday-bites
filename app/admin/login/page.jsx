@@ -6,7 +6,9 @@ import { getToken } from "../../firebase";
 export default function AdminLogin() {
   getToken().then((token) => {
     if (token) {
-      window.location.href = "/admin";
+      if (window != undefined) {
+        window.location.href = "/admin";
+      }
     }
   });
 

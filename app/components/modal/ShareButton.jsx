@@ -2,8 +2,12 @@ import { useState } from "react";
 
 export default function ShareLink({ recipe }) {
   function handleCopy() {
-    const url = `${window.location.origin}#${encodeURIComponent(recipe.name)}`;
-    navigator.clipboard.writeText(url);
+    if (window != undefined) {
+      const url = `${window.location.origin}#${encodeURIComponent(
+        recipe.name
+      )}`;
+      navigator.clipboard.writeText(url);
+    }
   }
 
   return (
